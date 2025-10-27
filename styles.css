@@ -915,16 +915,217 @@ body {
     color: rgba(255, 255, 255, 0.8);
 }
 
-/* ==================== SECCIÓN 6: DIFERENCIACIÓN ==================== */
+/* ==================== SECCIÓN 6: ODS 8 ==================== */
+#ods {
+    background: var(--color-light);
+    position: relative;
+}
+
+.ods-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    align-items: center;
+    margin: 60px 0;
+}
+
+.ods-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ods-icon {
+    width: 220px;
+    height: 220px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #A21942 0%, #DC2A2A 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 12px 40px rgba(162, 25, 66, 0.4);
+    position: relative;
+    transition: var(--transition);
+}
+
+.ods-icon:hover {
+    transform: scale(1.05) rotate(-2deg);
+    box-shadow: 0 16px 50px rgba(162, 25, 66, 0.6);
+}
+
+.ods-number {
+    font-size: 5rem;
+    font-weight: 900;
+    color: white;
+    line-height: 1;
+}
+
+.ods-icon i {
+    font-size: 3rem;
+    color: white;
+    margin-top: 10px;
+}
+
+.ods-description-box {
+    background: var(--color-light-gray);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+}
+
+.ods-description-box h3 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: var(--color-dark);
+    text-align: center;
+}
+
+.ods-points {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.ods-point {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    background: var(--color-light);
+    padding: 25px;
+    border-radius: 15px;
+    transition: var(--transition);
+    border-left: 4px solid #A21942;
+}
+
+.ods-point:hover {
+    transform: translateX(10px);
+    box-shadow: var(--shadow-md);
+}
+
+.ods-point-icon {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #A21942 0%, #DC2A2A 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.ods-point-content h4 {
+    font-size: 1.2rem;
+    color: var(--color-dark);
+    margin-bottom: 8px;
+}
+
+.ods-point-content p {
+    color: var(--color-gray);
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+.ods-footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 25px;
+    background: rgba(162, 25, 66, 0.1);
+    border-radius: 15px;
+    border: 2px solid rgba(162, 25, 66, 0.3);
+}
+
+.ods-footer p {
+    font-size: 1.1rem;
+    color: var(--color-dark);
+    font-weight: 500;
+}
+
+.ods-footer i {
+    color: #A21942;
+    margin-right: 10px;
+}
+
+/* ==================== SECCIÓN 7: DIFERENCIACIÓN ==================== */
 #diferenciacion {
     background: var(--color-light-gray);
 }
 
+/* Empresas que necesitan el bot */
+.value-proposition {
+    margin: 60px 0;
+    padding: 40px;
+    background: var(--color-light);
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+}
+
+.value-proposition h3 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--color-dark);
+}
+
+.business-types {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.business-type-card {
+    background: var(--color-light-gray);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.business-type-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.business-type-card i {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+}
+
+.business-type-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: var(--color-dark);
+}
+
+.business-type-card p {
+    font-size: 0.9rem;
+    color: var(--color-gray);
+    line-height: 1.6;
+}
+
+.value-why {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--color-dark);
+    padding: 20px;
+    background: rgba(0, 102, 255, 0.1);
+    border-radius: 10px;
+    border-left: 4px solid var(--color-primary);
+}
+
+/* Tabla de comparación */
 .comparison-table {
     background: var(--color-light);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: var(--shadow-lg);
+    margin: 40px 0 20px;
 }
 
 .table-header,
@@ -987,7 +1188,94 @@ body {
     color: #FFA500;
 }
 
-/* ==================== SECCIÓN 7: MODELO DE NEGOCIO ==================== */
+/* Notas de comparación */
+.comparison-notes {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 25px;
+    border-radius: 15px;
+    margin: 20px 0 40px;
+    border-left: 4px solid var(--color-secondary);
+}
+
+.comparison-notes p {
+    font-size: 0.9rem;
+    color: var(--color-dark);
+    margin-bottom: 10px;
+    line-height: 1.7;
+}
+
+.comparison-notes p:last-child {
+    margin-bottom: 0;
+}
+
+.comparison-notes sup {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+/* Caja de valor */
+.value-box {
+    background: var(--gradient-primary);
+    color: var(--color-light);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    margin-top: 40px;
+}
+
+.value-box h3 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.value-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.value-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    transition: var(--transition);
+}
+
+.value-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(10px);
+}
+
+.value-item i {
+    font-size: 2rem;
+    min-width: 40px;
+    width: 40px;
+    height: 40px;
+    background: var(--color-light);
+    color: var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.value-item strong {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.value-item p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+/* ==================== SECCIÓN 8: MODELO DE NEGOCIO ==================== */
 #modelo {
     background: var(--color-light);
 }
@@ -1135,7 +1423,7 @@ body {
     color: var(--color-light);
 }
 
-/* ==================== SECCIÓN 8: MÉTRICAS ==================== */
+/* ==================== SECCIÓN 9: MÉTRICAS ==================== */
 #metricas {
     background: var(--color-dark);
     color: var(--color-light);
@@ -1231,132 +1519,197 @@ body {
     height: 300px;
 }
 
-/* ==================== SECCIÓN 9: EQUIPO (FOTOS COMPLETAS) ==================== */
-#equipo {
-    background: var(--color-light-gray);
+/* Nota de validación */
+.validation-note {
+    background: rgba(255, 193, 7, 0.15);
+    border: 2px solid rgba(255, 193, 7, 0.5);
+    border-radius: 15px;
+    padding: 20px 25px;
+    margin: 30px 0;
 }
 
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 50px;
+.validation-note p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+    margin: 0;
 }
 
-.team-card {
-    background: var(--color-light);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: var(--shadow-lg);
+.validation-note i {
+    color: #FFC107;
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+/* ==================== LOGO EN TODAS LAS SECCIONES ==================== */
+.logo-section {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    z-index: 100;
+}
+
+.logo-section-img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
     transition: var(--transition);
 }
 
-.team-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
-}
-
-.team-image {
-    position: relative;
-    width: 100%;
-    height: 450px;
-    overflow: hidden;
-    background: linear-gradient(135deg, #0066FF 0%, #00D9A3 100%);
-}
-
-.team-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;  /* Cambiado de cover a contain para mostrar la foto completa */
-    object-position: center;
-    transition: var(--transition);
-    padding: 20px;
-}
-
-.team-card:hover .team-image img {
+.logo-section-img:hover {
     transform: scale(1.05);
 }
 
-.team-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
+/* ==================== SECCIÓN 10: EQUIPO (FOTOS EN CÍRCULO) ==================== */
+#equipo {
+    background: var(--color-light-gray);
+    position: relative;
+}
+
+.team-grid-new {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px;
+    max-width: 900px;
+    margin: 0 auto 60px;
+}
+
+.team-member {
+    background: var(--color-light);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.team-photo-circle {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 25px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid var(--color-primary);
+    box-shadow: 0 8px 24px rgba(0, 102, 255, 0.3);
+    transition: var(--transition);
+    background: linear-gradient(135deg, #0066FF 0%, #00D9A3 100%);
+}
+
+.team-photo-circle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 32px rgba(0, 102, 255, 0.5);
+}
+
+.team-photo-circle img {
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: var(--transition);
+    object-fit: cover;
+    object-position: center;
 }
 
-.team-card:hover .team-overlay {
-    opacity: 1;
-}
-
-.team-social {
-    display: flex;
-    gap: 20px;
-}
-
-.team-social a {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: var(--color-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-primary);
-    font-size: 1.5rem;
-    transition: var(--transition);
-}
-
-.team-social a:hover {
-    background: var(--color-primary);
-    color: var(--color-light);
-    transform: scale(1.2);
-}
-
-.team-info {
-    padding: 30px;
-}
-
-.team-info h3 {
-    font-size: 1.6rem;
+.team-member h3 {
+    font-size: 1.4rem;
     font-weight: 700;
     margin-bottom: 10px;
+    color: var(--color-dark);
 }
 
-.team-role {
+.team-role-main {
     color: var(--color-primary);
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 15px;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
+    background: rgba(0, 102, 255, 0.1);
+    padding: 8px 20px;
+    border-radius: 20px;
+    display: inline-block;
 }
 
-.team-info p {
+.team-description-text {
     color: var(--color-gray);
     line-height: 1.8;
     margin-bottom: 20px;
+    font-size: 0.95rem;
 }
 
 .team-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
+    justify-content: center;
 }
 
 .tag {
     background: var(--gradient-primary);
     color: var(--color-light);
-    padding: 5px 15px;
+    padding: 6px 14px;
     border-radius: 20px;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 600;
 }
 
-/* ==================== SECCIÓN 10: ROADMAP ==================== */
+/* Logos Institucionales */
+.institutional-logos {
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 2px solid rgba(0, 102, 255, 0.2);
+    text-align: center;
+}
+
+.logos-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--color-gray);
+    margin-bottom: 30px;
+}
+
+.logos-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.logo-badge {
+    width: 120px;
+    height: 80px;
+    background: var(--color-light);
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.logo-badge:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+}
+
+.logo-badge.logo-highlighted {
+    border-color: var(--color-primary);
+    background: rgba(0, 102, 255, 0.05);
+}
+
+.logo-placeholder {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-gray);
+    text-align: center;
+    padding: 10px;
+}
+
+/* ==================== SECCIÓN 11: ROADMAP ==================== */
 #roadmap {
     background: var(--gradient-dark);
     color: var(--color-light);
@@ -1502,6 +1855,21 @@ body {
     font-size: 3.5rem;
     font-weight: 900;
     margin-bottom: 30px;
+}
+
+.cta-title-main {
+    font-size: 3.2rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    color: var(--color-light);
+    line-height: 1.2;
+}
+
+.cta-description {
+    font-size: 1.4rem;
+    color: var(--color-secondary);
+    margin-bottom: 30px;
+    font-weight: 600;
 }
 
 .logo-large {
@@ -1910,6 +2278,10 @@ body {
         top: 25px;
     }
 
+    .logo-section-img {
+        height: 50px;
+    }
+
     .logo-final-image {
         height: 100px;
     }
@@ -1926,8 +2298,26 @@ body {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .team-grid {
+    .team-grid-new {
         grid-template-columns: 1fr;
+    }
+
+    .business-types {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ods-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .logos-container {
+        gap: 15px;
+    }
+
+    .logo-badge {
+        width: 100px;
+        height: 70px;
     }
 
     .timeline::before {
@@ -2026,6 +2416,15 @@ body {
         top: 20px;
     }
 
+    .logo-section-img {
+        height: 40px;
+    }
+
+    .logo-section {
+        right: 20px;
+        top: 20px;
+    }
+
     .logo-final-image {
         height: 80px;
     }
@@ -2056,6 +2455,14 @@ body {
         font-size: 2rem;
     }
 
+    .cta-title-main {
+        font-size: 2rem;
+    }
+
+    .cta-description {
+        font-size: 1.1rem;
+    }
+
     .logo-large {
         font-size: 2rem;
     }
@@ -2072,6 +2479,41 @@ body {
 
     .demo-chat-messages {
         height: 300px;
+    }
+
+    .business-types {
+        grid-template-columns: 1fr;
+    }
+
+    .ods-icon {
+        width: 180px;
+        height: 180px;
+    }
+
+    .ods-number {
+        font-size: 4rem;
+    }
+
+    .ods-icon i {
+        font-size: 2.5rem;
+    }
+
+    .team-photo-circle {
+        width: 150px;
+        height: 150px;
+    }
+
+    .logos-container {
+        gap: 10px;
+    }
+
+    .logo-badge {
+        width: 90px;
+        height: 60px;
+    }
+
+    .logo-placeholder {
+        font-size: 0.75rem;
     }
 }
 
