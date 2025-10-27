@@ -1,0 +1,28 @@
+{
+  "name": "attkia-ai-commerce",
+  "version": "1.0.0",
+  "description": "Chatbot inteligente que automatiza ventas - ATTKIA AI COMMERCE",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "vite build && echo 'Ready for deployment!'"
+  },
+  "keywords": [
+    "chatbot",
+    "ai",
+    "ventas",
+    "automatizacion",
+    "whatsapp",
+    "peru"
+  ],
+  "author": "ATTKIA AI COMMERCE Team",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
+
+
+

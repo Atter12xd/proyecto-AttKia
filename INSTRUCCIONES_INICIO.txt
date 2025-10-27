@@ -1,0 +1,129 @@
+================================================================
+    🤖 ATTKIA AI COMMERCE - Sitio Web Pitch
+================================================================
+
+✅ ¡PROYECTO COMPLETADO Y LISTO PARA USAR!
+
+═══════════════════════════════════════════════════════════════
+📋 PASOS RÁPIDOS PARA EMPEZAR:
+═══════════════════════════════════════════════════════════════
+
+1. AGREGAR FOTOS DEL EQUIPO (IMPORTANTE)
+   ----------------------------------------
+   Coloca las fotos en la carpeta "images/":
+   - atter.png  (foto de Atter Mayer)
+   - kiara.png  (foto de Shirley Kiara)
+   
+   ⚠️ Las fotos se mostrarán COMPLETAS (no cortadas)
+
+2. INSTALAR DEPENDENCIAS
+   ----------------------------------------
+   Abre PowerShell o CMD en esta carpeta y ejecuta:
+   
+   npm install
+
+3. EJECUTAR EL SITIO
+   ----------------------------------------
+   npm run dev
+   
+   → Se abrirá automáticamente en: http://localhost:3000
+
+═══════════════════════════════════════════════════════════════
+🎯 CARACTERÍSTICAS PRINCIPALES:
+═══════════════════════════════════════════════════════════════
+
+✨ 10 secciones profesionales según tu guion
+📱 Diseño responsive (se ve bien en móvil/tablet/desktop)
+🎨 Animaciones modernas y suaves
+🤖 Demo interactivo funcional del chatbot
+🌐 Listo para subir a la web (Netlify/Vercel)
+⚡ Optimizado con Vite (carga súper rápida)
+
+═══════════════════════════════════════════════════════════════
+💬 DEMO DEL CHATBOT:
+═══════════════════════════════════════════════════════════════
+
+Al final del sitio hay un botón "Probar Demo" que abre un 
+chatbot interactivo. Palabras clave que entiende:
+
+- "Hola" → Saludo
+- "Quiero hacer un pedido" → Muestra menú
+- "Pizza" → Procesa pedido
+- "Sí" / "Confirmo" → Confirma
+- "Gracias" → Despedida
+
+═══════════════════════════════════════════════════════════════
+🌐 SUBIR A LA WEB:
+═══════════════════════════════════════════════════════════════
+
+OPCIÓN 1 - NETLIFY (MÁS FÁCIL):
+1. Sube el proyecto a GitHub
+2. Ve a netlify.com
+3. "New site from Git"
+4. Conecta tu repositorio
+5. ¡Listo! → tu-sitio.netlify.app
+
+OPCIÓN 2 - VERCEL:
+npm install -g vercel
+vercel
+
+═══════════════════════════════════════════════════════════════
+🎤 PARA LA PRESENTACIÓN:
+═══════════════════════════════════════════════════════════════
+
+1. Ejecuta: npm run dev
+2. Presiona F11 para pantalla completa
+3. Navega con scroll del mouse o flechas del teclado
+4. Al final, muestra el demo del chatbot
+5. ¡Impresiona a los jurados! 🎯
+
+═══════════════════════════════════════════════════════════════
+📚 DOCUMENTACIÓN:
+═══════════════════════════════════════════════════════════════
+
+- README.md → Documentación completa
+- GUIA_RAPIDA.md → Guía rápida de uso y presentación
+- images/README.md → Instrucciones para las fotos
+
+═══════════════════════════════════════════════════════════════
+🆘 PROBLEMAS COMUNES:
+═══════════════════════════════════════════════════════════════
+
+❌ "npm install" da error:
+   → npm install --legacy-peer-deps
+
+❌ Las fotos no se ven:
+   → Verifica nombres: atter.png y kiara.png
+   → Deben estar en carpeta images/
+
+❌ No tengo Node.js instalado:
+   → Descarga de: nodejs.org (versión 16+)
+   → Luego ejecuta: npm install
+
+❌ Quiero cambiar colores/contenido:
+   → Edita styles.css para colores
+   → Edita index.html para contenido
+
+═══════════════════════════════════════════════════════════════
+✅ TODO LISTO:
+═══════════════════════════════════════════════════════════════
+
+✓ HTML con 10 secciones optimizadas
+✓ CSS moderno y responsive
+✓ JavaScript con animaciones e interactividad
+✓ Demo funcional del chatbot
+✓ Configuración para Vite
+✓ Archivos para Netlify/Vercel deployment
+✓ Documentación completa
+
+═══════════════════════════════════════════════════════════════
+
+🤖 ATTKIA AI COMMERCE
+   "Trabaja menos, vende más"
+
+¡Mucho éxito en tu presentación! 🚀
+
+================================================================
+
+
+
