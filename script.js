@@ -569,7 +569,7 @@ const demoSendBtn = document.getElementById('demoSend');
 const demoChatMessages = document.getElementById('demoChatMessages');
 const suggestionBtns = document.querySelectorAll('.suggestion-btn');
 
-// Respuestas del chatbot
+// Respuestas del chatbot - Mejoradas
 const botResponses = {
     'hola': [
         '¡Hola! 👋 Bienvenido a nuestra tienda. ¿En qué puedo ayudarte hoy?',
@@ -584,64 +584,111 @@ const botResponses = {
         '',
         '¿Qué te gustaría ordenar?'
     ],
+    'menu': [
+        'Aquí está nuestro menú completo 📋',
+        '',
+        '🍕 Pizza Familiar - S/35',
+        '🍔 Hamburguesa Clásica - S/18',
+        '🌮 Tacos x3 - S/22',
+        '🥤 Bebidas - S/5',
+        '',
+        '¿Qué te apetece hoy?'
+    ],
     'pizza': [
         'Excelente elección 😊',
         '',
-        '¿Pizza Familiar - S/35?',
+        'Pizza Familiar - S/35',
+        '',
+        '¿Confirmas tu pedido?'
+    ],
+    'hamburguesa': [
+        '¡Buena elección! 🍔',
+        '',
+        'Hamburguesa Clásica - S/18',
+        '',
+        '¿Confirmas tu pedido?'
+    ],
+    'tacos': [
+        '¡Deliciosos tacos! 🌮',
+        '',
+        'Tacos x3 - S/22',
         '',
         '¿Confirmas tu pedido?'
     ],
     'si': [
         '¡Genial! Pedido registrado ✅',
         '',
-        'Pizza Familiar - S/35',
+        'Tu pedido está siendo procesado.',
         '',
         '¿Cuál es tu dirección de entrega?'
     ],
     'gracias': [
         '¡Un placer ayudarte! 🙏',
         '',
-        'Tu pedido está siendo procesado y llegará en 30-40 minutos.',
+        'Tu pedido llegará en 30-40 minutos.',
         '',
         '¿Necesitas algo más?'
     ],
+    'info': [
+        'Soy ATTKIA, tu asistente de ventas inteligente 🤖',
+        '',
+        'Puedo ayudarte a:',
+        '• Ver el menú',
+        '• Hacer pedidos',
+        '• Responder consultas',
+        '',
+        '¡Todo automáticamente y sin errores!'
+    ],
     'default': [
-        'Entiendo. ¿Puedo ayudarte con algo específico?',
+        'Entiendo. ¿Puedo ayudarte con algo específico? 🤔',
         '',
         'Puedes decir:',
         '• "Quiero hacer un pedido"',
         '• "Mostrar menú"',
+        '• "Info sobre ATTKIA"',
         '• "Gracias"'
     ]
 };
 
-// Abrir modal
-openDemoBtn.addEventListener('click', () => {
-    demoModal.classList.add('show');
-    demoInput.focus();
-});
+// Validar elementos antes de agregar eventos
+if (openDemoBtn && demoModal) {
+    // Abrir modal
+    openDemoBtn.addEventListener('click', () => {
+        demoModal.classList.add('show');
+        if (demoInput) demoInput.focus();
+    });
+}
 
-// Cerrar modal
-closeDemoBtn.addEventListener('click', closeModal);
-demoModal.addEventListener('click', (e) => {
-    if (e.target === demoModal) {
-        closeModal();
-    }
-});
+if (closeDemoBtn) {
+    // Cerrar modal
+    closeDemoBtn.addEventListener('click', closeModal);
+}
+
+if (demoModal) {
+    demoModal.addEventListener('click', (e) => {
+        if (e.target === demoModal) {
+            closeModal();
+        }
+    });
+}
 
 function closeModal() {
-    demoModal.classList.remove('show');
+    if (demoModal) {
+        demoModal.classList.remove('show');
+    }
 }
 
 // Cerrar con ESC
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && demoModal.classList.contains('show')) {
+    if (e.key === 'Escape' && demoModal && demoModal.classList.contains('show')) {
         closeModal();
     }
 });
 
 // Enviar mensaje
 function sendMessage() {
+    if (!demoInput || !demoChatMessages) return;
+    
     const message = demoInput.value.trim();
     if (!message) return;
 
@@ -660,21 +707,30 @@ function sendMessage() {
     }, 800);
 }
 
-demoSendBtn.addEventListener('click', sendMessage);
-demoInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        sendMessage();
-    }
-});
+if (demoSendBtn) {
+    demoSendBtn.addEventListener('click', sendMessage);
+}
+
+if (demoInput) {
+    demoInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+}
 
 // Botones de sugerencias
-suggestionBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const msg = btn.getAttribute('data-msg');
-        demoInput.value = msg;
-        sendMessage();
+if (suggestionBtns.length > 0) {
+    suggestionBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const msg = btn.getAttribute('data-msg');
+            if (demoInput) {
+                demoInput.value = msg;
+                sendMessage();
+            }
+        });
     });
-});
+}
 
 // Agregar mensaje al chat
 function addMessage(text, type) {
@@ -704,18 +760,26 @@ function addMessage(text, type) {
     demoChatMessages.scrollTop = demoChatMessages.scrollHeight;
 }
 
-// Obtener respuesta del bot
+// Obtener respuesta del bot - Mejorado
 function getBotResponse(message) {
     const lowerMessage = message.toLowerCase();
 
     if (lowerMessage.includes('hola') || lowerMessage.includes('hi') || lowerMessage.includes('buenas')) {
         return botResponses.hola;
+    } else if (lowerMessage.includes('menu') || lowerMessage.includes('menú') || lowerMessage.includes('carta')) {
+        return botResponses.menu;
     } else if (lowerMessage.includes('pedido') || lowerMessage.includes('comprar') || lowerMessage.includes('orden')) {
         return botResponses.pedido;
     } else if (lowerMessage.includes('pizza')) {
         return botResponses.pizza;
+    } else if (lowerMessage.includes('hamburguesa') || lowerMessage.includes('burger')) {
+        return botResponses.hamburguesa;
+    } else if (lowerMessage.includes('taco')) {
+        return botResponses.tacos;
     } else if (lowerMessage.includes('si') || lowerMessage.includes('sí') || lowerMessage.includes('confirmo') || lowerMessage.includes('ok')) {
         return botResponses.si;
+    } else if (lowerMessage.includes('info') || lowerMessage.includes('attkia') || lowerMessage.includes('qué eres') || lowerMessage.includes('que eres')) {
+        return botResponses.info;
     } else if (lowerMessage.includes('gracias') || lowerMessage.includes('thank')) {
         return botResponses.gracias;
     } else {

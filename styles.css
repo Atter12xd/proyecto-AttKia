@@ -150,7 +150,7 @@ body {
 }
 
 .logo-image {
-    height: 100px;
+    height: 140px;
     width: auto;
     object-fit: contain;
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
@@ -1658,12 +1658,13 @@ body {
     font-weight: 600;
 }
 
-/* Logos Institucionales */
+/* Logos Institucionales - Carrusel Animado */
 .institutional-logos {
     margin-top: 80px;
     padding-top: 40px;
     border-top: 2px solid rgba(0, 102, 255, 0.2);
     text-align: center;
+    overflow: hidden;
 }
 
 .logos-title {
@@ -1673,17 +1674,37 @@ body {
     margin-bottom: 30px;
 }
 
-.logos-container {
+.logos-carousel-wrapper {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logos-carousel {
     display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 25px;
-    flex-wrap: wrap;
+    animation: scrollLogos 20s linear infinite;
+    width: fit-content;
+}
+
+.logos-carousel:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scrollLogos {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 .logo-badge {
-    width: 120px;
-    height: 80px;
+    min-width: 140px;
+    height: 90px;
     background: var(--color-light);
     border: 2px solid #e0e0e0;
     border-radius: 12px;
@@ -1692,6 +1713,7 @@ body {
     justify-content: center;
     transition: var(--transition);
     box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
 }
 
 .logo-badge:hover {
@@ -1711,6 +1733,20 @@ body {
     color: var(--color-gray);
     text-align: center;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-placeholder i {
+    font-size: 2rem;
+    color: var(--color-primary);
+}
+
+.logo-placeholder span {
+    font-size: 0.8rem;
+    display: block;
 }
 
 /* ==================== SECCIÓN 11: ROADMAP ==================== */
@@ -1894,7 +1930,7 @@ body {
 }
 
 .logo-final-image {
-    height: 120px;
+    height: 160px;
     width: auto;
     object-fit: contain;
     filter: drop-shadow(0 4px 16px rgba(0, 217, 163, 0.5));
@@ -2315,13 +2351,13 @@ body {
         gap: 40px;
     }
 
-    .logos-container {
+    .logos-carousel {
         gap: 15px;
     }
 
     .logo-badge {
-        width: 100px;
-        height: 70px;
+        min-width: 120px;
+        height: 80px;
     }
 
     .timeline::before {
@@ -2507,17 +2543,21 @@ body {
         height: 150px;
     }
 
-    .logos-container {
+    .logos-carousel {
         gap: 10px;
     }
 
     .logo-badge {
-        width: 90px;
-        height: 60px;
+        min-width: 100px;
+        height: 70px;
     }
 
     .logo-placeholder {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
+    }
+
+    .logo-placeholder i {
+        font-size: 1.5rem;
     }
 }
 
