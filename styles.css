@@ -74,8 +74,8 @@ body {
     justify-content: center;
     padding: 80px 20px;
     position: relative;
-    opacity: 0;
-    transform: translateY(50px);
+    opacity: 1;
+    transform: translateY(0);
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
@@ -607,6 +607,7 @@ body {
 /* ==================== SECCIÓN 3: SOLUCIÓN ==================== */
 #solucion {
     background: var(--color-light);
+    position: relative;
 }
 
 .solution-intro,
@@ -1051,6 +1052,7 @@ body {
 /* ==================== SECCIÓN 7: DIFERENCIACIÓN ==================== */
 #diferenciacion {
     background: var(--color-light-gray);
+    position: relative;
 }
 
 /* Empresas que necesitan el bot */
@@ -1278,6 +1280,7 @@ body {
 /* ==================== SECCIÓN 8: MODELO DE NEGOCIO ==================== */
 #modelo {
     background: var(--color-light);
+    position: relative;
 }
 
 .business-flow {
@@ -1427,6 +1430,7 @@ body {
 #metricas {
     background: var(--color-dark);
     color: var(--color-light);
+    position: relative;
 }
 
 .metrics-description {

@@ -22,32 +22,23 @@ function initNavigation() {
         });
     });
 
-    // Navegación con scroll del mouse (más controlado)
-    let lastScrollTime = 0;
-    let scrollThrottle = false;
+    // Scroll normal habilitado - navegación manual desactivada
+    // El scroll ahora funciona de manera tradicional
+    // Se mantienen los puntos de navegación lateral para cambio rápido
     
-    window.addEventListener('wheel', (e) => {
-        if (scrollThrottle) return;
+    // Detectar sección actual basada en scroll
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.scrollY + window.innerHeight / 2;
         
-        const now = Date.now();
-        if (now - lastScrollTime < 1500) return; // Más tiempo entre scrolls para mejor control
-        
-        // Verificar que el scroll es significativo
-        if (Math.abs(e.deltaY) < 10) return;
-        
-        if (e.deltaY > 0 && currentSection < sections.length - 1) {
-            // Scroll hacia abajo
-            scrollThrottle = true;
-            lastScrollTime = now;
-            goToSection(currentSection + 1);
-            setTimeout(() => { scrollThrottle = false; }, 1500);
-        } else if (e.deltaY < 0 && currentSection > 0) {
-            // Scroll hacia arriba
-            scrollThrottle = true;
-            lastScrollTime = now;
-            goToSection(currentSection - 1);
-            setTimeout(() => { scrollThrottle = false; }, 1500);
-        }
+        sections.forEach((section, index) => {
+            const sectionTop = section.offsetTop;
+            const sectionBottom = sectionTop + section.offsetHeight;
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                currentSection = index;
+                updateNavigation();
+            }
+        });
     }, { passive: true });
 
     // Navegación con teclado (más responsiva)
@@ -140,7 +131,7 @@ function updateNavigation() {
 // ==================== ANIMACIONES DE SCROLL ====================
 function initScrollAnimations() {
     const observerOptions = {
-        threshold: 0.3,
+        threshold: 0.2,
         rootMargin: '0px'
     };
 
@@ -161,7 +152,9 @@ function initScrollAnimations() {
         });
     }, observerOptions);
 
+    // Hacer que todas las secciones sean visibles inmediatamente
     sections.forEach(section => {
+        section.classList.add('active');
         observer.observe(section);
     });
 }
@@ -526,10 +519,13 @@ if (checkMobile()) {
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
     
-    // Animar la primera sección
-    setTimeout(() => {
-        sections[0].classList.add('active');
-    }, 100);
+    // Hacer todas las secciones visibles desde el inicio
+    sections.forEach(section => {
+        section.classList.add('active');
+    });
+    
+    // Actualizar navegación inicial
+    updateNavigation();
 });
 
 // ==================== SMOOTH SCROLL PARA NAVEGACIÓN ====================
