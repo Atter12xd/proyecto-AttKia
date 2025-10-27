@@ -150,7 +150,7 @@ body {
 }
 
 .logo-image {
-    height: 140px;
+    height: 180px;
     width: auto;
     object-fit: contain;
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
@@ -1554,7 +1554,7 @@ body {
 }
 
 .logo-section-img {
-    height: 60px;
+    height: 90px;
     width: auto;
     object-fit: contain;
     filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
@@ -1930,7 +1930,7 @@ body {
 }
 
 .logo-final-image {
-    height: 160px;
+    height: 200px;
     width: auto;
     object-fit: contain;
     filter: drop-shadow(0 4px 16px rgba(0, 217, 163, 0.5));
@@ -2310,7 +2310,7 @@ body {
     }
 
     .logo-image {
-        height: 80px;
+        height: 120px;
     }
     
     .logo-container {
@@ -2319,11 +2319,11 @@ body {
     }
 
     .logo-section-img {
-        height: 50px;
+        height: 70px;
     }
 
     .logo-final-image {
-        height: 100px;
+        height: 140px;
     }
 
     .urgency-stats {
@@ -2448,7 +2448,7 @@ body {
     }
 
     .logo-image {
-        height: 65px;
+        height: 100px;
     }
     
     .logo-container {
@@ -2457,7 +2457,7 @@ body {
     }
 
     .logo-section-img {
-        height: 40px;
+        height: 60px;
     }
 
     .logo-section {
@@ -2466,7 +2466,7 @@ body {
     }
 
     .logo-final-image {
-        height: 80px;
+        height: 120px;
     }
 
     .metrics-grid {
