@@ -561,14 +561,6 @@ logos.forEach(logo => {
 });
 
 // ==================== DEMO INTERACTIVO ====================
-const demoModal = document.getElementById('demoModal');
-const openDemoBtn = document.getElementById('openDemo');
-const closeDemoBtn = document.getElementById('closeDemo');
-const demoInput = document.getElementById('demoInput');
-const demoSendBtn = document.getElementById('demoSend');
-const demoChatMessages = document.getElementById('demoChatMessages');
-const suggestionBtns = document.querySelectorAll('.suggestion-btn');
-
 // Respuestas del chatbot - Mejoradas
 const botResponses = {
     'hola': [
@@ -650,152 +642,173 @@ const botResponses = {
     ]
 };
 
-// Validar elementos antes de agregar eventos
-if (openDemoBtn && demoModal) {
-    // Abrir modal
-    openDemoBtn.addEventListener('click', () => {
-        demoModal.classList.add('show');
-        if (demoInput) demoInput.focus();
+// Inicializar Demo cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', function() {
+    const demoModal = document.getElementById('demoModal');
+    const openDemoBtn = document.getElementById('openDemo');
+    const closeDemoBtn = document.getElementById('closeDemo');
+    const demoInput = document.getElementById('demoInput');
+    const demoSendBtn = document.getElementById('demoSend');
+    const demoChatMessages = document.getElementById('demoChatMessages');
+    const suggestionBtns = document.querySelectorAll('.suggestion-btn');
+
+    console.log('Demo inicializado:', {
+        modal: !!demoModal,
+        button: !!openDemoBtn,
+        input: !!demoInput
     });
-}
 
-if (closeDemoBtn) {
+    // Abrir modal
+    if (openDemoBtn && demoModal) {
+        openDemoBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Abriendo modal...');
+            demoModal.classList.add('show');
+            demoModal.style.display = 'flex';
+            if (demoInput) {
+                setTimeout(() => demoInput.focus(), 100);
+            }
+        });
+    }
+
     // Cerrar modal
-    closeDemoBtn.addEventListener('click', closeModal);
-}
+    function closeModal() {
+        if (demoModal) {
+            demoModal.classList.remove('show');
+            setTimeout(() => {
+                demoModal.style.display = 'none';
+            }, 300);
+        }
+    }
 
-if (demoModal) {
-    demoModal.addEventListener('click', (e) => {
-        if (e.target === demoModal) {
+    if (closeDemoBtn) {
+        closeDemoBtn.addEventListener('click', closeModal);
+    }
+
+    if (demoModal) {
+        demoModal.addEventListener('click', function(e) {
+            if (e.target === demoModal) {
+                closeModal();
+            }
+        });
+    }
+
+    // Cerrar con ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && demoModal && demoModal.classList.contains('show')) {
             closeModal();
         }
     });
-}
 
-function closeModal() {
-    if (demoModal) {
-        demoModal.classList.remove('show');
+    // Enviar mensaje
+    function sendMessage() {
+        if (!demoInput || !demoChatMessages) return;
+        
+        const message = demoInput.value.trim();
+        if (!message) return;
+
+        // Agregar mensaje del usuario
+        addMessage(message, 'user');
+        demoInput.value = '';
+
+        // Simular "typing"
+        setTimeout(() => {
+            const response = getBotResponse(message);
+            response.forEach((line, index) => {
+                setTimeout(() => {
+                    addMessage(line, 'bot');
+                }, index * 600);
+            });
+        }, 800);
     }
-}
 
-// Cerrar con ESC
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && demoModal && demoModal.classList.contains('show')) {
-        closeModal();
+    if (demoSendBtn) {
+        demoSendBtn.addEventListener('click', sendMessage);
     }
-});
 
-// Enviar mensaje
-function sendMessage() {
-    if (!demoInput || !demoChatMessages) return;
-    
-    const message = demoInput.value.trim();
-    if (!message) return;
-
-    // Agregar mensaje del usuario
-    addMessage(message, 'user');
-    demoInput.value = '';
-
-    // Simular "typing"
-    setTimeout(() => {
-        const response = getBotResponse(message);
-        response.forEach((line, index) => {
-            setTimeout(() => {
-                addMessage(line, 'bot');
-            }, index * 600);
-        });
-    }, 800);
-}
-
-if (demoSendBtn) {
-    demoSendBtn.addEventListener('click', sendMessage);
-}
-
-if (demoInput) {
-    demoInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            sendMessage();
-        }
-    });
-}
-
-// Botones de sugerencias
-if (suggestionBtns.length > 0) {
-    suggestionBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const msg = btn.getAttribute('data-msg');
-            if (demoInput) {
-                demoInput.value = msg;
+    if (demoInput) {
+        demoInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
                 sendMessage();
             }
         });
-    });
-}
-
-// Agregar mensaje al chat
-function addMessage(text, type) {
-    if (!text) return; // No agregar mensajes vacíos
-
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `demo-message demo-${type}`;
-
-    if (type === 'bot') {
-        messageDiv.innerHTML = `
-            <div class="demo-avatar">🤖</div>
-            <div class="demo-bubble">
-                <p>${text}</p>
-                <span class="demo-time">${getCurrentTime()}</span>
-            </div>
-        `;
-    } else {
-        messageDiv.innerHTML = `
-            <div class="demo-bubble">
-                <p>${text}</p>
-                <span class="demo-time">${getCurrentTime()}</span>
-            </div>
-        `;
     }
 
-    demoChatMessages.appendChild(messageDiv);
-    demoChatMessages.scrollTop = demoChatMessages.scrollHeight;
-}
-
-// Obtener respuesta del bot - Mejorado
-function getBotResponse(message) {
-    const lowerMessage = message.toLowerCase();
-
-    if (lowerMessage.includes('hola') || lowerMessage.includes('hi') || lowerMessage.includes('buenas')) {
-        return botResponses.hola;
-    } else if (lowerMessage.includes('menu') || lowerMessage.includes('menú') || lowerMessage.includes('carta')) {
-        return botResponses.menu;
-    } else if (lowerMessage.includes('pedido') || lowerMessage.includes('comprar') || lowerMessage.includes('orden')) {
-        return botResponses.pedido;
-    } else if (lowerMessage.includes('pizza')) {
-        return botResponses.pizza;
-    } else if (lowerMessage.includes('hamburguesa') || lowerMessage.includes('burger')) {
-        return botResponses.hamburguesa;
-    } else if (lowerMessage.includes('taco')) {
-        return botResponses.tacos;
-    } else if (lowerMessage.includes('si') || lowerMessage.includes('sí') || lowerMessage.includes('confirmo') || lowerMessage.includes('ok')) {
-        return botResponses.si;
-    } else if (lowerMessage.includes('info') || lowerMessage.includes('attkia') || lowerMessage.includes('qué eres') || lowerMessage.includes('que eres')) {
-        return botResponses.info;
-    } else if (lowerMessage.includes('gracias') || lowerMessage.includes('thank')) {
-        return botResponses.gracias;
-    } else {
-        return botResponses.default;
+    // Botones de sugerencias
+    if (suggestionBtns.length > 0) {
+        suggestionBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                const msg = btn.getAttribute('data-msg');
+                if (demoInput) {
+                    demoInput.value = msg;
+                    sendMessage();
+                }
+            });
+        });
     }
-}
 
-// Obtener hora actual
-function getCurrentTime() {
-    const now = new Date();
-    const hours = now.getHours().toString().padStart(2, '0');
-    const minutes = now.getMinutes().toString().padStart(2, '0');
-    return `${hours}:${minutes}`;
-}
+    // Funciones auxiliares
+    function addMessage(text, type) {
+        if (!text || !demoChatMessages) return;
+
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `demo-message demo-${type}`;
+
+        if (type === 'bot') {
+            messageDiv.innerHTML = `
+                <div class="demo-avatar">🤖</div>
+                <div class="demo-bubble">
+                    <p>${text}</p>
+                    <span class="demo-time">${getCurrentTime()}</span>
+                </div>
+            `;
+        } else {
+            messageDiv.innerHTML = `
+                <div class="demo-bubble">
+                    <p>${text}</p>
+                    <span class="demo-time">${getCurrentTime()}</span>
+                </div>
+            `;
+        }
+
+        demoChatMessages.appendChild(messageDiv);
+        demoChatMessages.scrollTop = demoChatMessages.scrollHeight;
+    }
+
+    function getBotResponse(message) {
+        const lowerMessage = message.toLowerCase();
+
+        if (lowerMessage.includes('hola') || lowerMessage.includes('hi') || lowerMessage.includes('buenas')) {
+            return botResponses.hola;
+        } else if (lowerMessage.includes('menu') || lowerMessage.includes('menú') || lowerMessage.includes('carta')) {
+            return botResponses.menu;
+        } else if (lowerMessage.includes('pedido') || lowerMessage.includes('comprar') || lowerMessage.includes('orden')) {
+            return botResponses.pedido;
+        } else if (lowerMessage.includes('pizza')) {
+            return botResponses.pizza;
+        } else if (lowerMessage.includes('hamburguesa') || lowerMessage.includes('burger')) {
+            return botResponses.hamburguesa;
+        } else if (lowerMessage.includes('taco')) {
+            return botResponses.tacos;
+        } else if (lowerMessage.includes('si') || lowerMessage.includes('sí') || lowerMessage.includes('confirmo') || lowerMessage.includes('ok')) {
+            return botResponses.si;
+        } else if (lowerMessage.includes('info') || lowerMessage.includes('attkia') || lowerMessage.includes('qué eres') || lowerMessage.includes('que eres')) {
+            return botResponses.info;
+        } else if (lowerMessage.includes('gracias') || lowerMessage.includes('thank')) {
+            return botResponses.gracias;
+        } else {
+            return botResponses.default;
+        }
+    }
+
+    function getCurrentTime() {
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        return `${hours}:${minutes}`;
+    }
+});
 
 console.log('%c🤖 ATTKIA AI COMMERCE', 'font-size: 24px; font-weight: bold; color: #0066FF;');
 console.log('%c💡 Trabaja menos, vende más.', 'font-size: 16px; color: #00D9A3;');
 console.log('%c🚀 Web creada con amor por el equipo ATTKIA', 'font-size: 12px; color: #666;');
-

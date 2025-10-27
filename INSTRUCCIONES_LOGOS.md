@@ -4,12 +4,12 @@
 
 El carrusel ahora incluye las siguientes empresas:
 
-### ✅ Ya configuradas (con íconos):
-1. **Center Trading Corporation** 🌐
-2. **Archipier Builder Supply** 🔧 ([https://www.archipierbuildersupply.com/](https://www.archipierbuildersupply.com/))
-3. **Girasol** ☀️ ([girasol.pe](http://girasol.pe))
+### ✅ Ya configuradas (con imágenes reales):
+1. **Center Trading Corporation** - Logo desde [centertradingcorporation.com](https://centertradingcorporation.com/logo.svg)
+2. **Archipier Builder Supply** - Logo desde [archipierbuildersupply.com](https://www.archipierbuildersupply.com/_astro/imagen3.D8vca5MM.png)
+3. **Girasol** - Logo desde [girasol.pe](https://girasol.pe/images/logo-girasol-nuevo.png)
 
-### 📸 Pendientes (espacio preparado para imágenes):
+### 📸 Pendientes (espacio preparado para tus imágenes locales):
 4. **UNHEVAL** - Universidad Nacional Hermilio Valdizán
 5. **SENATI** - Servicio Nacional de Adiestramiento en Trabajo Industrial
 
