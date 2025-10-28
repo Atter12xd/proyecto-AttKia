@@ -1121,62 +1121,7 @@ body {
     border-left: 4px solid var(--color-primary);
 }
 
-/* Tabla de comparación */
-.comparison-table {
-    background: var(--color-light);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: var(--shadow-lg);
-    margin: 40px 0 20px;
-}
-
-.table-header,
-.table-row {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 20px;
-    padding: 25px;
-    align-items: center;
-}
-
-.table-header {
-    background: var(--gradient-primary);
-    color: var(--color-light);
-    font-weight: 700;
-    font-size: 1.1rem;
-}
-
-.table-row {
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.table-row:last-child {
-    border-bottom: none;
-}
-
-.table-row:hover {
-    background: var(--color-light-gray);
-}
-
-.table-cell {
-    text-align: center;
-    padding: 10px;
-}
-
-.feature-name {
-    text-align: left;
-    font-weight: 600;
-}
-
-.highlight-cell {
-    background: rgba(0, 102, 255, 0.1);
-    border-radius: 10px;
-    font-weight: 700;
-}
-
-.table-cell i {
-    font-size: 1.5rem;
-}
+/* Tabla de comparación - ahora usando tabla HTML real con estilos modernos */
 
 .fa-check-circle {
     color: var(--color-secondary);
@@ -1190,30 +1135,7 @@ body {
     color: #FFA500;
 }
 
-/* Notas de comparación */
-.comparison-notes {
-    background: rgba(255, 255, 255, 0.8);
-    padding: 25px;
-    border-radius: 15px;
-    margin: 20px 0 40px;
-    border-left: 4px solid var(--color-secondary);
-}
-
-.comparison-notes p {
-    font-size: 0.9rem;
-    color: var(--color-dark);
-    margin-bottom: 10px;
-    line-height: 1.7;
-}
-
-.comparison-notes p:last-child {
-    margin-bottom: 0;
-}
-
-.comparison-notes sup {
-    color: var(--color-primary);
-    font-weight: 700;
-}
+/* Notas de comparación - ahora definidas en sección de nuevos estilos (línea ~3061) */
 
 /* Caja de valor */
 .value-box {
@@ -2908,44 +2830,197 @@ body {
     margin-right: 10px;
 }
 
-/* Next Steps Box */
-.next-steps-box {
-    background: linear-gradient(135deg, #E8F5F7, #D4EEF3);
-    padding: 35px;
-    border-radius: 20px;
-    margin: 30px 0;
-    border-left: 5px solid var(--color-secondary);
+/* Validation Status Box */
+.validation-status-box {
+    background: linear-gradient(135deg, #F0F9FF, #E0F2FE);
+    padding: 40px;
+    border-radius: 25px;
+    margin: 40px 0;
+    border: 2px solid var(--color-secondary);
+    box-shadow: 0 10px 40px rgba(0, 217, 163, 0.15);
 }
 
-.next-steps-box h3 {
+.validation-status-box h3 {
     color: var(--color-primary);
-    font-size: 24px;
+    font-size: 28px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.validation-intro {
+    text-align: center;
+    color: var(--color-text);
+    font-size: 16px;
+    margin-bottom: 35px;
+    font-style: italic;
+}
+
+.validation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.validation-card {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.validation-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 217, 163, 0.2);
+    border-color: var(--color-secondary);
+}
+
+.validation-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.validation-number {
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.validation-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 10px;
+}
+
+.validation-detail {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.key-insights {
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    margin-bottom: 35px;
+    border-left: 5px solid #FFA502;
+}
+
+.key-insights h4 {
+    color: var(--color-primary);
+    font-size: 22px;
     margin-bottom: 25px;
     text-align: center;
 }
 
-.steps-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.insights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
 }
 
-.step-item {
+.insight-item {
     display: flex;
     gap: 15px;
     align-items: flex-start;
+    padding: 20px;
+    background: linear-gradient(135deg, #FFF9E6, #FFF3CC);
+    border-radius: 15px;
+    transition: var(--transition);
 }
 
-.step-item i {
-    color: var(--color-secondary);
-    font-size: 20px;
+.insight-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(255, 165, 2, 0.2);
+}
+
+.insight-item i {
+    color: #FFA502;
+    font-size: 24px;
     margin-top: 3px;
+    min-width: 30px;
 }
 
-.step-item p {
+.insight-item p {
     color: var(--color-text);
     line-height: 1.6;
-    font-size: 16px;
+    font-size: 14px;
+}
+
+.testimonial-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.testimonial-mini {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    position: relative;
+    border-left: 4px solid var(--color-secondary);
+}
+
+.testimonial-mini i {
+    color: var(--color-secondary);
+    font-size: 24px;
+    margin-bottom: 15px;
+    opacity: 0.3;
+}
+
+.testimonial-mini p {
+    color: var(--color-text);
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.testimonial-author {
+    color: var(--color-primary);
+    font-size: 13px;
+    font-weight: 600;
+    border-top: 2px solid #e9ecef;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+.testimonial-author strong {
+    color: var(--color-secondary);
+    font-size: 15px;
+}
+
+.partners-validation {
+    background: linear-gradient(135deg, rgba(0, 102, 255, 0.05), rgba(0, 217, 163, 0.05));
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px dashed var(--color-secondary);
+}
+
+.partners-validation p {
+    color: var(--color-text);
+    line-height: 1.7;
+    font-size: 15px;
+    margin: 0;
+}
+
+.partners-validation i {
+    color: var(--color-secondary);
+    font-size: 20px;
+    margin-right: 10px;
 }
 
 /* Team Competencies */
@@ -3029,6 +3104,66 @@ body {
 .comparison-table-wrapper {
     overflow-x: auto;
     margin: 40px 0;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.comparison-table thead {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+}
+
+.comparison-table thead th {
+    color: white;
+    padding: 20px 15px;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    border: none;
+}
+
+.comparison-table thead th:first-child {
+    text-align: left;
+    padding-left: 30px;
+}
+
+.comparison-table tbody tr {
+    border-bottom: 1px solid #e9ecef;
+    transition: var(--transition);
+}
+
+.comparison-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.comparison-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.comparison-table tbody td {
+    padding: 18px 15px;
+    text-align: center;
+    color: var(--color-text);
+    font-size: 15px;
+}
+
+.comparison-table tbody td:first-child {
+    text-align: left;
+    padding-left: 30px;
+    font-weight: 500;
+    color: var(--color-primary);
+}
+
+.comparison-table .attkia-col {
+    background: linear-gradient(135deg, rgba(0, 217, 163, 0.1), rgba(0, 102, 255, 0.05));
+    font-weight: 600;
 }
 
 .table-logo {
@@ -3040,17 +3175,38 @@ body {
 
 .check-green {
     color: #00D9A3;
-    font-size: 20px;
+    font-size: 24px;
 }
 
 .check-red {
     color: #FF4757;
-    font-size: 20px;
+    font-size: 24px;
 }
 
 .check-partial {
     color: #FFA502;
-    font-size: 20px;
+    font-size: 24px;
+}
+
+.comparison-notes {
+    background: linear-gradient(135deg, #FFF9E6, #FFF3CC);
+    padding: 20px 30px;
+    border-radius: 0 0 20px 20px;
+    border-top: 3px solid #FFD93D;
+    margin-top: -5px;
+}
+
+.comparison-notes p {
+    margin: 0;
+    color: var(--color-text);
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.comparison-notes i {
+    color: #FFA502;
+    margin-right: 10px;
+    font-size: 16px;
 }
 
 /* Responsive Adjustments */
@@ -3101,6 +3257,84 @@ body {
     
     .team-competencies p {
         font-size: 13px;
+    }
+    
+    /* Tabla de comparación responsive */
+    .comparison-table thead th,
+    .comparison-table tbody td {
+        padding: 12px 8px;
+        font-size: 13px;
+    }
+    
+    .comparison-table thead th:first-child,
+    .comparison-table tbody td:first-child {
+        padding-left: 15px;
+    }
+    
+    .table-logo {
+        height: 20px;
+    }
+    
+    .check-green,
+    .check-red,
+    .check-partial {
+        font-size: 18px;
+    }
+    
+    .comparison-notes {
+        padding: 15px 20px;
+        font-size: 13px;
+    }
+    
+    /* Validation Status Box responsive */
+    .validation-status-box {
+        padding: 25px 20px;
+    }
+    
+    .validation-status-box h3 {
+        font-size: 24px;
+    }
+    
+    .validation-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .validation-card {
+        padding: 25px 15px;
+    }
+    
+    .validation-number {
+        font-size: 36px;
+    }
+    
+    .insights-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .insight-item {
+        padding: 15px;
+    }
+    
+    .key-insights {
+        padding: 25px 20px;
+    }
+    
+    .key-insights h4 {
+        font-size: 20px;
+    }
+    
+    .testimonial-preview {
+        grid-template-columns: 1fr;
+    }
+    
+    .testimonial-mini {
+        padding: 20px;
+    }
+    
+    .partners-validation {
+        padding: 20px 15px;
+        font-size: 14px;
     }
 }
 
