@@ -1,0 +1,4 @@
+# No ignorar nada - servir todo
+!images/
+!images/*.png
+
