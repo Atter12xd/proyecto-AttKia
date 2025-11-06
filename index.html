@@ -1218,11 +1218,29 @@
             const cap = document.getElementById('zoomCaption');
             
             if (modal && img && cap) {
-                modal.style.display = 'block';
+                // Configurar imagen primero
                 img.src = src;
+                img.alt = caption;
                 cap.textContent = caption;
-                setTimeout(function() { modal.classList.add('show'); }, 10);
+                
+                // Mostrar modal
+                modal.style.display = 'block';
+                modal.style.opacity = '0';
+                
+                // Forzar reflow
+                void modal.offsetHeight;
+                
+                // Fade in
+                setTimeout(function() { 
+                    modal.classList.add('show');
+                    modal.style.opacity = '1';
+                }, 50);
+                
                 console.log('✅ Zoom abierto!');
+                console.log('Imagen src:', img.src);
+                console.log('Modal display:', modal.style.display);
+            } else {
+                console.error('❌ Elementos no encontrados:', {modal: !!modal, img: !!img, cap: !!cap});
             }
         };
         

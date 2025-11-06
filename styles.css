@@ -5760,7 +5760,7 @@ body {
 .image-zoom-modal {
     display: none;
     position: fixed;
-    z-index: 10000;
+    z-index: 999999 !important;
     padding-top: 50px;
     left: 0;
     top: 0;
@@ -5773,7 +5773,7 @@ body {
 }
 
 .image-zoom-modal.show {
-    opacity: 1;
+    opacity: 1 !important;
 }
 
 .zoom-modal-content {
@@ -5785,6 +5785,10 @@ body {
     animation: zoomIn 0.3s ease-out;
     border-radius: 10px;
     box-shadow: 0 20px 80px rgba(0, 217, 163, 0.3);
+    position: relative;
+    z-index: 999999;
+    background: white;
+    padding: 20px;
 }
 
 @keyframes zoomIn {
@@ -5820,8 +5824,8 @@ body {
     font-weight: bold;
     transition: all 0.3s;
     cursor: pointer;
-    z-index: 10001;
-    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999999 !important;
+    background: rgba(0, 0, 0, 0.8);
     width: 60px;
     height: 60px;
     border-radius: 50%;
