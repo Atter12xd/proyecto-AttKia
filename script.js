@@ -1,3 +1,31 @@
+// ==================== ZOOM DE IMÁGENES - PRIMERO ====================
+// Definir ANTES de todo para que esté disponible en onclick del HTML
+window.openZoom = function(src, caption) {
+    console.log('🔍 Abriendo zoom:', src);
+    const modal = document.getElementById('imageZoomModal');
+    const img = document.getElementById('zoomedImage');
+    const cap = document.getElementById('zoomCaption');
+    
+    if (modal && img && cap) {
+        modal.style.display = 'block';
+        img.src = src;
+        cap.textContent = caption;
+        setTimeout(() => modal.classList.add('show'), 10);
+        console.log('✅ Zoom abierto');
+    } else {
+        console.error('❌ Elementos del zoom no encontrados');
+    }
+};
+
+window.closeZoom = function() {
+    console.log('❌ Cerrando zoom');
+    const modal = document.getElementById('imageZoomModal');
+    if (modal) {
+        modal.classList.remove('show');
+        setTimeout(() => modal.style.display = 'none', 300);
+    }
+};
+
 // ==================== VARIABLES GLOBALES ====================
 let currentSection = 0;
 const sections = document.querySelectorAll('.section');
@@ -820,64 +848,24 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// ==================== ZOOM DE IMÁGENES - ULTRA REFORZADO ====================
-// Funciones globales disponibles inmediatamente
-window.openZoom = function(src, caption) {
-    console.log('🔍 Intentando abrir zoom:', src);
-    
-    const modal = document.getElementById('imageZoomModal');
-    const img = document.getElementById('zoomedImage');
-    const cap = document.getElementById('zoomCaption');
-    
-    if (!modal) {
-        console.error('❌ Modal no encontrado');
-        return;
-    }
-    
-    console.log('✅ Abriendo zoom...');
-    modal.style.display = 'block';
-    img.src = src;
-    cap.textContent = caption;
-    
-    // Forzar reflow
-    void modal.offsetWidth;
-    
-    setTimeout(() => {
-        modal.classList.add('show');
-        console.log('✅ Zoom abierto completamente');
-    }, 10);
-};
-
-window.closeZoom = function() {
-    console.log('❌ Cerrando zoom...');
-    
-    const modal = document.getElementById('imageZoomModal');
-    if (!modal) return;
-    
-    modal.classList.remove('show');
-    setTimeout(() => {
-        modal.style.display = 'none';
-        console.log('✅ Zoom cerrado');
-    }, 300);
-};
-
-// Inicializar eventos de cierre cuando el DOM esté listo
-(function initZoom() {
+// ==================== EVENTOS DE CIERRE DEL ZOOM ====================
+// Configurar eventos cuando el DOM esté listo
+(function initZoomEvents() {
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', setupZoomEvents);
+        document.addEventListener('DOMContentLoaded', setupZoomCloseEvents);
     } else {
-        setupZoomEvents();
+        setupZoomCloseEvents();
     }
 })();
 
-function setupZoomEvents() {
-    console.log('⚙️ Configurando eventos de zoom...');
+function setupZoomCloseEvents() {
+    console.log('⚙️ Configurando eventos de cierre del zoom...');
     
     const modal = document.getElementById('imageZoomModal');
     const closeBtn = document.querySelector('.zoom-close');
     
     if (!modal) {
-        console.error('❌ Modal de zoom no encontrado en el DOM');
+        console.error('❌ Modal de zoom no encontrado');
         return;
     }
     
@@ -888,7 +876,6 @@ function setupZoomEvents() {
             e.stopPropagation();
             closeZoom();
         };
-        console.log('✅ Botón X configurado');
     }
     
     // Cerrar clickeando fuera de la imagen
@@ -897,7 +884,6 @@ function setupZoomEvents() {
             closeZoom();
         }
     };
-    console.log('✅ Click fuera configurado');
     
     // Cerrar con tecla ESC
     document.addEventListener('keydown', function(e) {
@@ -905,9 +891,8 @@ function setupZoomEvents() {
             closeZoom();
         }
     });
-    console.log('✅ Tecla ESC configurada');
     
-    console.log('✅✅✅ Sistema de zoom inicializado correctamente');
+    console.log('✅ Sistema de zoom listo');
 }
 
 console.log('%c🤖 ATTKIA AI COMMERCE', 'font-size: 24px; font-weight: bold; color: #0066FF;');
