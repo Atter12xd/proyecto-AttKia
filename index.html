@@ -1208,6 +1208,58 @@
         </div>
     </div>
 
+    <!-- ZOOM: Cargar PRIMERO para que esté disponible en onclick -->
+    <script>
+        // Funciones de zoom definidas inline para disponibilidad inmediata
+        window.openZoom = function(src, caption) {
+            console.log('🔍 Zoom abriendo:', src);
+            const modal = document.getElementById('imageZoomModal');
+            const img = document.getElementById('zoomedImage');
+            const cap = document.getElementById('zoomCaption');
+            
+            if (modal && img && cap) {
+                modal.style.display = 'block';
+                img.src = src;
+                cap.textContent = caption;
+                setTimeout(function() { modal.classList.add('show'); }, 10);
+                console.log('✅ Zoom abierto!');
+            }
+        };
+        
+        window.closeZoom = function() {
+            console.log('❌ Cerrando zoom');
+            const modal = document.getElementById('imageZoomModal');
+            if (modal) {
+                modal.classList.remove('show');
+                setTimeout(function() { modal.style.display = 'none'; }, 300);
+            }
+        };
+        
+        // Configurar eventos de cierre
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('imageZoomModal');
+            const closeBtn = document.querySelector('.zoom-close');
+            
+            if (closeBtn) {
+                closeBtn.onclick = closeZoom;
+            }
+            
+            if (modal) {
+                modal.onclick = function(e) {
+                    if (e.target === modal) closeZoom();
+                };
+            }
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal && modal.style.display === 'block') {
+                    closeZoom();
+                }
+            });
+            
+            console.log('✅✅ ZOOM LISTO');
+        });
+    </script>
+    
     <script src="script.js"></script>
     <script>
         // ===== DEMO INTERACTIVO CON IA SIMULADA =====
