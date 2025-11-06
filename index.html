@@ -1218,23 +1218,41 @@
             const cap = document.getElementById('zoomCaption');
             
             if (modal && img && cap) {
-                // Configurar imagen primero
+                // Resetear estilos
+                img.style.display = 'block';
+                img.style.visibility = 'visible';
+                img.style.opacity = '1';
+                img.style.maxWidth = '90vw';
+                img.style.maxHeight = '90vh';
+                img.style.margin = 'auto';
+                img.style.background = 'white';
+                img.style.padding = '10px';
+                img.style.borderRadius = '10px';
+                
+                // Evento de carga de imagen
+                img.onload = function() {
+                    console.log('✅ Imagen cargada exitosamente!');
+                    console.log('Dimensiones:', img.naturalWidth, 'x', img.naturalHeight);
+                };
+                
+                img.onerror = function() {
+                    console.error('❌ Error al cargar imagen:', src);
+                    alert('Error: No se pudo cargar la imagen. Verifica que existe en: ' + src);
+                };
+                
+                // Configurar imagen
                 img.src = src;
                 img.alt = caption;
                 cap.textContent = caption;
+                cap.style.display = 'block';
+                cap.style.color = 'white';
                 
                 // Mostrar modal
-                modal.style.display = 'block';
-                modal.style.opacity = '0';
-                
-                // Forzar reflow
-                void modal.offsetHeight;
-                
-                // Fade in
-                setTimeout(function() { 
-                    modal.classList.add('show');
-                    modal.style.opacity = '1';
-                }, 50);
+                modal.style.display = 'flex';
+                modal.style.alignItems = 'center';
+                modal.style.justifyContent = 'center';
+                modal.style.flexDirection = 'column';
+                modal.classList.add('show');
                 
                 console.log('✅ Zoom abierto!');
                 console.log('Imagen src:', img.src);
