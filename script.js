@@ -820,76 +820,58 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// ==================== ZOOM DE IMÁGENES - SIMPLIFICADO ====================
-setTimeout(function() {
-    console.log('🔍 Inicializando zoom de imágenes...');
-    
+// ==================== ZOOM DE IMÁGENES ====================
+// Función global para abrir zoom
+window.openZoom = function(src, caption) {
     const modal = document.getElementById('imageZoomModal');
-    const modalImg = document.getElementById('zoomedImage');
-    const captionText = document.getElementById('zoomCaption');
+    const img = document.getElementById('zoomedImage');
+    const cap = document.getElementById('zoomCaption');
+    
+    modal.style.display = 'block';
+    img.src = src;
+    cap.textContent = caption;
+    setTimeout(() => modal.classList.add('show'), 10);
+    
+    console.log('Zoom abierto:', src);
+};
+
+// Función global para cerrar zoom
+window.closeZoom = function() {
+    const modal = document.getElementById('imageZoomModal');
+    modal.classList.remove('show');
+    setTimeout(() => modal.style.display = 'none', 300);
+    
+    console.log('Zoom cerrado');
+};
+
+// Inicializar eventos de cierre
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('imageZoomModal');
     const closeBtn = document.querySelector('.zoom-close');
     
-    if (!modal || !modalImg || !captionText) {
-        console.error('❌ Modal de zoom no encontrado');
-        return;
-    }
-    
-    console.log('✅ Modal encontrado');
-    
-    // Función para abrir el zoom
-    window.openImageZoom = function(imgSrc, caption) {
-        console.log('📸 Abriendo imagen:', imgSrc);
-        modal.style.display = 'block';
-        modalImg.src = imgSrc;
-        captionText.innerHTML = caption;
-        setTimeout(() => modal.classList.add('show'), 10);
-    };
-    
-    // Función para cerrar el zoom
-    window.closeImageZoom = function() {
-        console.log('❌ Cerrando zoom');
-        modal.classList.remove('show');
-        setTimeout(() => modal.style.display = 'none', 300);
-    };
-    
-    // Agregar clicks a las imágenes
-    const screenshots = document.querySelectorAll('.clickable-screenshot');
-    console.log('📷 Imágenes encontradas:', screenshots.length);
-    
-    screenshots.forEach((wrapper, index) => {
-        const img = wrapper.querySelector('img');
-        if (img) {
-            wrapper.style.cursor = 'pointer';
-            wrapper.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log('👆 Click en imagen ' + (index + 1));
-                const caption = this.getAttribute('data-caption') || 'Captura de pantalla';
-                openImageZoom(img.src, caption);
-            });
-        }
-    });
-    
-    // Cerrar con X
+    // Cerrar con botón X
     if (closeBtn) {
-        closeBtn.onclick = closeImageZoom;
+        closeBtn.onclick = function() { closeZoom(); };
     }
     
-    // Cerrar clickeando fuera
-    modal.onclick = function(e) {
-        if (e.target === modal) {
-            closeImageZoom();
-        }
-    };
+    // Cerrar clickeando fuera de la imagen
+    if (modal) {
+        modal.onclick = function(e) {
+            if (e.target === modal) {
+                closeZoom();
+            }
+        };
+    }
     
-    // Cerrar con ESC
+    // Cerrar con tecla ESC
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal.style.display === 'block') {
-            closeImageZoom();
+        if (e.key === 'Escape' && modal && modal.style.display === 'block') {
+            closeZoom();
         }
     });
     
-    console.log('✅ Zoom configurado correctamente');
-}, 1000);
+    console.log('✅ Sistema de zoom inicializado');
+});
 
 console.log('%c🤖 ATTKIA AI COMMERCE', 'font-size: 24px; font-weight: bold; color: #0066FF;');
 console.log('%c💡 Trabaja menos, vende más.', 'font-size: 16px; color: #00D9A3;');

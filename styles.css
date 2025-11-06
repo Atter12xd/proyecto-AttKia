@@ -5625,11 +5625,12 @@ body {
 .screenshot-wrapper {
     position: relative;
     overflow: hidden;
-    height: 500px;
+    height: 600px;
     background: #f5f5f5;
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: zoom-in;
 }
 
 .screenshot-img {
@@ -5640,6 +5641,7 @@ body {
     background: white;
     padding: 10px;
     border-radius: 8px;
+    cursor: zoom-in;
 }
 
 .screenshot-card:hover .screenshot-img {
@@ -5708,7 +5710,7 @@ body {
     }
     
     .screenshot-wrapper {
-        height: 450px;
+        height: 500px;
     }
     
     .accounting-feature-box {
@@ -5746,7 +5748,7 @@ body {
     }
     
     .screenshot-wrapper {
-        height: 400px;
+        height: 450px;
     }
     
     .accounting-content h3 {
