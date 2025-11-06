@@ -820,58 +820,95 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// ==================== ZOOM DE IMÁGENES ====================
-// Función global para abrir zoom
+// ==================== ZOOM DE IMÁGENES - ULTRA REFORZADO ====================
+// Funciones globales disponibles inmediatamente
 window.openZoom = function(src, caption) {
+    console.log('🔍 Intentando abrir zoom:', src);
+    
     const modal = document.getElementById('imageZoomModal');
     const img = document.getElementById('zoomedImage');
     const cap = document.getElementById('zoomCaption');
     
+    if (!modal) {
+        console.error('❌ Modal no encontrado');
+        return;
+    }
+    
+    console.log('✅ Abriendo zoom...');
     modal.style.display = 'block';
     img.src = src;
     cap.textContent = caption;
-    setTimeout(() => modal.classList.add('show'), 10);
     
-    console.log('Zoom abierto:', src);
+    // Forzar reflow
+    void modal.offsetWidth;
+    
+    setTimeout(() => {
+        modal.classList.add('show');
+        console.log('✅ Zoom abierto completamente');
+    }, 10);
 };
 
-// Función global para cerrar zoom
 window.closeZoom = function() {
-    const modal = document.getElementById('imageZoomModal');
-    modal.classList.remove('show');
-    setTimeout(() => modal.style.display = 'none', 300);
+    console.log('❌ Cerrando zoom...');
     
-    console.log('Zoom cerrado');
+    const modal = document.getElementById('imageZoomModal');
+    if (!modal) return;
+    
+    modal.classList.remove('show');
+    setTimeout(() => {
+        modal.style.display = 'none';
+        console.log('✅ Zoom cerrado');
+    }, 300);
 };
 
-// Inicializar eventos de cierre
-document.addEventListener('DOMContentLoaded', function() {
+// Inicializar eventos de cierre cuando el DOM esté listo
+(function initZoom() {
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupZoomEvents);
+    } else {
+        setupZoomEvents();
+    }
+})();
+
+function setupZoomEvents() {
+    console.log('⚙️ Configurando eventos de zoom...');
+    
     const modal = document.getElementById('imageZoomModal');
     const closeBtn = document.querySelector('.zoom-close');
     
+    if (!modal) {
+        console.error('❌ Modal de zoom no encontrado en el DOM');
+        return;
+    }
+    
     // Cerrar con botón X
     if (closeBtn) {
-        closeBtn.onclick = function() { closeZoom(); };
+        closeBtn.onclick = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeZoom();
+        };
+        console.log('✅ Botón X configurado');
     }
     
     // Cerrar clickeando fuera de la imagen
-    if (modal) {
-        modal.onclick = function(e) {
-            if (e.target === modal) {
-                closeZoom();
-            }
-        };
-    }
+    modal.onclick = function(e) {
+        if (e.target === modal) {
+            closeZoom();
+        }
+    };
+    console.log('✅ Click fuera configurado');
     
     // Cerrar con tecla ESC
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal && modal.style.display === 'block') {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
             closeZoom();
         }
     });
+    console.log('✅ Tecla ESC configurada');
     
-    console.log('✅ Sistema de zoom inicializado');
-});
+    console.log('✅✅✅ Sistema de zoom inicializado correctamente');
+}
 
 console.log('%c🤖 ATTKIA AI COMMERCE', 'font-size: 24px; font-weight: bold; color: #0066FF;');
 console.log('%c💡 Trabaja menos, vende más.', 'font-size: 16px; color: #00D9A3;');
