@@ -6452,3 +6452,270 @@ body {
         font-size: 12px;
     }
 }
+
+/* ==================== PRICING MODERNO TIPO SAAS TOP ==================== */
+.pricing-subtitle {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    margin-top: 10px;
+}
+
+.pricing-cards-modern {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 35px;
+    margin: 60px 0;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pricing-card-modern {
+    background: white;
+    border-radius: 25px;
+    padding: 40px 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
+    border: 2px solid #e0e0e0;
+}
+
+.pricing-card-modern:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.featured-plan {
+    border: 3px solid var(--color-secondary);
+    transform: scale(1.05);
+    box-shadow: 0 20px 60px rgba(0, 217, 163, 0.3);
+}
+
+.featured-plan:hover {
+    transform: scale(1.08) translateY(-10px);
+}
+
+.popular-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--color-secondary), #00C9A0);
+    color: white;
+    padding: 8px 25px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 5px 20px rgba(0, 217, 163, 0.4);
+    letter-spacing: 0.5px;
+}
+
+.plan-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.plan-header h3 {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+}
+
+.plan-description {
+    font-size: 15px;
+    color: #666;
+    margin: 0;
+}
+
+.price-modern {
+    text-align: center;
+    margin: 30px 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.price-modern .currency {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-right: 5px;
+    margin-top: 8px;
+}
+
+.price-modern .amount {
+    font-size: 64px;
+    font-weight: 900;
+    color: var(--color-primary);
+    line-height: 1;
+}
+
+.price-modern .period {
+    font-size: 18px;
+    color: #666;
+    margin-left: 5px;
+    margin-top: 15px;
+}
+
+.plan-limit {
+    text-align: center;
+    background: linear-gradient(135deg, rgba(0, 217, 163, 0.1), rgba(0, 102, 255, 0.1));
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 30px;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 35px 0;
+}
+
+.features-list li {
+    padding: 12px 0;
+    font-size: 15px;
+    color: #333;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    line-height: 1.5;
+}
+
+.features-list li i {
+    color: var(--color-secondary);
+    font-size: 18px;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.features-list li strong {
+    color: var(--color-primary);
+}
+
+.plan-button {
+    width: 100%;
+    padding: 16px 30px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, var(--color-primary), #0052CC);
+    color: white;
+    box-shadow: 0 8px 25px rgba(0, 102, 255, 0.3);
+}
+
+.plan-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0, 102, 255, 0.4);
+}
+
+.featured-button {
+    background: linear-gradient(135deg, var(--color-secondary), #00C9A0);
+    box-shadow: 0 8px 25px rgba(0, 217, 163, 0.4);
+}
+
+.featured-button:hover {
+    box-shadow: 0 12px 35px rgba(0, 217, 163, 0.5);
+}
+
+.pricing-guarantee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background: linear-gradient(135deg, rgba(52, 199, 89, 0.1), rgba(48, 209, 88, 0.05));
+    border: 2px solid rgba(52, 199, 89, 0.3);
+    border-radius: 20px;
+    padding: 30px 40px;
+    margin: 40px auto;
+    max-width: 800px;
+}
+
+.guarantee-icon {
+    font-size: 50px;
+    animation: shieldPulse 2s ease-in-out infinite;
+}
+
+@keyframes shieldPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.guarantee-text {
+    text-align: left;
+}
+
+.guarantee-text strong {
+    display: block;
+    font-size: 20px;
+    color: #34c759;
+    margin-bottom: 5px;
+}
+
+.guarantee-text p {
+    margin: 0;
+    color: #666;
+    font-size: 15px;
+}
+
+/* Responsive para pricing */
+@media (max-width: 1024px) {
+    .pricing-cards-modern {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .featured-plan {
+        transform: scale(1);
+    }
+    
+    .featured-plan:hover {
+        transform: scale(1.02) translateY(-10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .price-modern .amount {
+        font-size: 52px;
+    }
+    
+    .plan-header h3 {
+        font-size: 24px;
+    }
+    
+    .features-list li {
+        font-size: 14px;
+    }
+    
+    .pricing-guarantee {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px 20px;
+    }
+    
+    .guarantee-text {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .pricing-card-modern {
+        padding: 30px 20px;
+    }
+    
+    .price-modern .amount {
+        font-size: 42px;
+    }
+    
+    .popular-badge {
+        font-size: 11px;
+        padding: 6px 20px;
+    }
+}
