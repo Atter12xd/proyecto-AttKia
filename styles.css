@@ -6125,3 +6125,330 @@ body {
         font-size: 16px !important;
     }
 }
+
+/* ==================== SECCIÓN DE PROBLEMA MEGA VISUAL ==================== */
+.problem-stats-mega {
+    background: linear-gradient(135deg, rgba(255, 59, 48, 0.05), rgba(255, 149, 0, 0.05));
+    border: 3px solid rgba(255, 59, 48, 0.3);
+    border-radius: 30px;
+    padding: 50px 40px;
+    margin: 50px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.problem-stats-mega::before {
+    content: '⚠️';
+    position: absolute;
+    font-size: 200px;
+    opacity: 0.05;
+    top: 50%;
+    right: 50px;
+    transform: translateY(-50%);
+}
+
+.mega-stat-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.mega-stat-header h3 {
+    font-size: 32px;
+    font-weight: 900;
+    color: #d32f2f;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.mega-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.mega-stat-card {
+    background: white;
+    border-radius: 20px;
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    animation: statSlideIn 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes statSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mega-stat-card:nth-child(1) { animation-delay: 0.1s; }
+.mega-stat-card:nth-child(2) { animation-delay: 0.3s; }
+.mega-stat-card:nth-child(3) { animation-delay: 0.5s; }
+
+.mega-stat-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.stat-primary {
+    border-top: 6px solid #0066FF;
+}
+
+.stat-danger {
+    border-top: 6px solid #ff3b30;
+}
+
+.stat-warning {
+    border-top: 6px solid #ff9500;
+}
+
+.stat-icon-mega {
+    font-size: 60px;
+    margin-bottom: 15px;
+    animation: iconBounce 2s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.stat-number-mega {
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 1;
+    margin: 15px 0;
+    background: linear-gradient(135deg, #ff3b30, #ff9500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-label-mega {
+    font-size: 22px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.stat-description {
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+/* Barra de pérdida visual */
+.loss-visual-bar {
+    margin: 20px 0;
+}
+
+.bar-container {
+    display: flex;
+    height: 50px;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.bar-lost {
+    background: linear-gradient(135deg, #ff3b30, #d32f2f);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    animation: barFillLoss 2s ease-out;
+}
+
+.bar-kept {
+    background: linear-gradient(135deg, #34c759, #28a745);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    animation: barFillKept 2s ease-out;
+}
+
+@keyframes barFillLoss {
+    from { width: 0% !important; }
+}
+
+@keyframes barFillKept {
+    from { width: 0% !important; }
+}
+
+/* Visualización de clientes perdidos */
+.client-loss-visual {
+    margin: 20px 0;
+}
+
+.client-icons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.client-icon {
+    font-size: 30px;
+    animation: clientFadeIn 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.client-icon.lost {
+    filter: grayscale(100%) opacity(0.4);
+}
+
+.client-icon.stay {
+    filter: none;
+}
+
+.client-icon:nth-child(1) { animation-delay: 0.1s; }
+.client-icon:nth-child(2) { animation-delay: 0.2s; }
+.client-icon:nth-child(3) { animation-delay: 0.3s; }
+.client-icon:nth-child(4) { animation-delay: 0.4s; }
+.client-icon:nth-child(5) { animation-delay: 0.5s; }
+.client-icon:nth-child(6) { animation-delay: 0.6s; }
+.client-icon:nth-child(7) { animation-delay: 0.7s; }
+.client-icon:nth-child(8) { animation-delay: 0.8s; }
+.client-icon:nth-child(9) { animation-delay: 0.9s; }
+.client-icon:nth-child(10) { animation-delay: 1s; }
+
+@keyframes clientFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Conclusión visual del problema */
+.problem-conclusion-visual {
+    background: linear-gradient(135deg, #ff3b30, #ff9500);
+    border-radius: 20px;
+    padding: 30px 40px;
+    text-align: center;
+    box-shadow: 0 15px 50px rgba(255, 59, 48, 0.4);
+    animation: conclusionPulse 2s ease-in-out infinite;
+}
+
+@keyframes conclusionPulse {
+    0%, 100% {
+        box-shadow: 0 15px 50px rgba(255, 59, 48, 0.4);
+    }
+    50% {
+        box-shadow: 0 20px 70px rgba(255, 59, 48, 0.6);
+    }
+}
+
+.conclusion-icon {
+    font-size: 60px;
+    margin-bottom: 15px;
+    animation: iconShake 1.5s ease-in-out infinite;
+}
+
+@keyframes iconShake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+}
+
+.problem-conclusion-visual h3 {
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.text-danger {
+    font-size: 36px;
+    font-weight: 900;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    animation: numberPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes numberPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Responsive para problema mega */
+@media (max-width: 768px) {
+    .mega-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .mega-stat-header h3 {
+        font-size: 24px;
+    }
+    
+    .stat-number-mega {
+        font-size: 42px;
+    }
+    
+    .stat-label-mega {
+        font-size: 18px;
+    }
+    
+    .problem-conclusion-visual h3 {
+        font-size: 22px;
+    }
+    
+    .text-danger {
+        font-size: 28px;
+    }
+    
+    .problem-stats-mega {
+        padding: 30px 20px;
+    }
+    
+    .client-icons {
+        gap: 5px;
+    }
+    
+    .client-icon {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .stat-number-mega {
+        font-size: 36px;
+    }
+    
+    .problem-conclusion-visual h3 {
+        font-size: 18px;
+    }
+    
+    .text-danger {
+        font-size: 24px;
+    }
+    
+    .bar-container {
+        height: 40px;
+    }
+    
+    .bar-lost span, .bar-kept span {
+        font-size: 12px;
+    }
+}
