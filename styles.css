@@ -286,15 +286,12 @@ body {
 
 .hero-image-container {
     position: relative;
-    width: 100%;
-    max-width: 960px;
-    min-height: 420px;
+    width: min(100%, 960px);
+    height: clamp(380px, 60vw, 520px);
     margin: 60px auto 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
-    flex-wrap: wrap;
 }
 
 /* Phone Mockup */
@@ -2289,9 +2286,8 @@ body {
     }
 
     .hero-image-container {
-        min-height: 340px;
+        height: clamp(340px, 70vw, 480px);
         margin: 40px auto 30px;
-        gap: 24px;
     }
 
     .hero-content {
@@ -2418,19 +2414,8 @@ body {
     }
 
     .phone-mockup {
-        width: min(260px, 75vw);
-    }
-
-    .floating-notification {
-        position: static;
-        width: 100%;
-        max-width: 320px;
-        padding: 10px 15px;
-        font-size: 0.85rem;
-        justify-content: center;
-        animation: none;
-        margin: 10px auto 0;
-        box-shadow: var(--shadow-md);
+        width: min(260px, 68vw);
+        border-radius: 32px;
     }
 
     .cards-grid {
@@ -2448,15 +2433,15 @@ body {
     }
 
     .logo-image {
-        width: clamp(140px, 52vw, 190px);
+        width: clamp(150px, 42vw, 200px);
         height: auto;
     }
     
     .logo-container {
-        position: static;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
+        position: absolute;
+        top: 18px;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     .logo-section-img {
@@ -2569,13 +2554,36 @@ body {
     }
 
     .hero-content {
-        padding: 0 8px;
+        padding: 70px 12px 0;
     }
 
     .hero-image-container {
-        min-height: 0;
-        margin: 30px auto;
-        gap: 18px;
+        height: clamp(320px, 110vw, 440px);
+        margin: 20px auto 40px;
+    }
+
+    .floating-notification {
+        width: auto;
+        max-width: 230px;
+        font-size: 0.85rem;
+    }
+
+    .notif-1 {
+        top: 16%;
+        left: 50%;
+        transform: translate(-125%, 0);
+    }
+
+    .notif-2 {
+        top: 48%;
+        left: 50%;
+        transform: translate(30%, -40%);
+    }
+
+    .notif-3 {
+        bottom: 10%;
+        left: 50%;
+        transform: translate(-80%, 0);
     }
 
     .hero-stats {
@@ -2583,7 +2591,7 @@ body {
     }
 
     .notif-content {
-        text-align: center;
+        text-align: left;
     }
 }
 
@@ -5347,12 +5355,27 @@ body {
     }
 
     .phone-mockup {
-        width: min(230px, 82vw);
-        padding: 12px;
+        width: min(220px, 78vw);
+        padding: 10px;
     }
 
     .floating-notification {
-        max-width: 260px;
+        max-width: 210px;
+    }
+
+    .notif-1 {
+        top: 14%;
+        transform: translate(-110%, 0) scale(0.92);
+    }
+
+    .notif-2 {
+        top: 46%;
+        transform: translate(25%, -45%) scale(0.92);
+    }
+
+    .notif-3 {
+        bottom: 8%;
+        transform: translate(-70%, 0) scale(0.92);
     }
 
     .section {

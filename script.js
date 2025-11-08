@@ -18,7 +18,15 @@ function initNavigation() {
     // Navegación con puntos laterales
     navDots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
-            goToSection(index);
+            if (window.innerWidth > 1024) {
+                goToSection(index);
+            } else {
+                sections[index].scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                    inline: 'nearest'
+                });
+            }
         });
     });
 
