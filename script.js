@@ -65,30 +65,34 @@ function initNavigation() {
         }
     });
 
-    // Navegación con touch (móvil)
-    let touchStartY = 0;
-    let touchEndY = 0;
+    // Navegación con touch (solo para pantallas grandes táctiles)
+    const shouldEnableSwipeNavigation = window.innerWidth > 1024;
 
-    document.addEventListener('touchstart', (e) => {
-        touchStartY = e.touches[0].clientY;
-    }, { passive: true });
+    if (shouldEnableSwipeNavigation) {
+        let touchStartY = 0;
+        let touchEndY = 0;
 
-    document.addEventListener('touchend', (e) => {
-        touchEndY = e.changedTouches[0].clientY;
-        handleSwipe();
-    }, { passive: true });
+        document.addEventListener('touchstart', (e) => {
+            touchStartY = e.touches[0].clientY;
+        }, { passive: true });
 
-    function handleSwipe() {
-        const swipeThreshold = 50;
-        const diff = touchStartY - touchEndY;
+        document.addEventListener('touchend', (e) => {
+            touchEndY = e.changedTouches[0].clientY;
+            handleSwipe();
+        }, { passive: true });
 
-        if (Math.abs(diff) > swipeThreshold) {
-            if (diff > 0 && currentSection < sections.length - 1) {
-                // Swipe hacia arriba
-                goToSection(currentSection + 1);
-            } else if (diff < 0 && currentSection > 0) {
-                // Swipe hacia abajo
-                goToSection(currentSection - 1);
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartY - touchEndY;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0 && currentSection < sections.length - 1) {
+                    // Swipe hacia arriba
+                    goToSection(currentSection + 1);
+                } else if (diff < 0 && currentSection > 0) {
+                    // Swipe hacia abajo
+                    goToSection(currentSection - 1);
+                }
             }
         }
     }

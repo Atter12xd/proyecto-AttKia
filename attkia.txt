@@ -1,0 +1,47 @@
+🚀 AttKia AI Commerce
+
+"Tu asistente inteligente que trabaja mientras tú descansas."
+
+🧠 Resumen general del proyecto
+
+AttKia AI Commerce es un chatbot con inteligencia artificial diseñado para automatizar la atención al cliente, gestión de ventas y generación de reportes en tiempo real para emprendedores, negocios locales, profesionales independientes y empresas que buscan ahorrar tiempo y reducir errores humanos.
+
+Nuestra tecnología permite que cada negocio tenga su propio asistente digital personalizado, capaz de adaptarse a su rubro (ventas, salud, educación, servicios, etc.) y operar 24/7 sin supervisión.
+
+💬 Qué hace AttKia
+
+Atiende automáticamente a los clientes 24/7
+Gestiona consultas, cotizaciones y pedidos sin intervención humana.
+Crea los pedidos de manera automática y notifica al dueño y al área de delivery o responsable asignado.
+
+Chatbot contador con IA en tiempo real
+Genera reportes automáticos sobre ventas, productos más vendidos, clientes frecuentes, promociones recomendadas y rendimiento general del negocio — todo visualizado en gráficos dinámicos y paneles de control.
+
+Asistente flexible para distintos sectores
+
+🛍️ En comercios, actúa como vendedor digital y organizador de pedidos.
+
+🩺 En centros médicos, gestiona citas automáticamente, identifica horarios disponibles y notifica a pacientes y doctores.
+
+💼 En servicios, programa reuniones, envía recordatorios y coordina agendas.
+
+Integración completa con herramientas modernas (n8n + IA)
+El chatbot entiende texto, audio e imágenes; puede recibir una foto, interpretarla y responder de manera coherente.
+Cada acción se sincroniza con una base de datos inteligente (como Supabase) para mantener el historial actualizado y generar análisis automáticos.
+
+Presencia digital completa
+AttKia ofrece también la creación de páginas web y marketing digital (SEO, TikTok Ads, Google Ads) para que cada cliente tenga visibilidad total y su chatbot trabaje desde un entorno optimizado.
+
+💡 Visión
+
+Convertirnos en el asistente inteligente número uno del Perú, que empodere a cada emprendedor o profesional para automatizar su negocio, vender más y recuperar su tiempo.
+
+🌍 Impacto
+
+Ahorra horas de atención manual.
+
+Disminuye errores humanos en pedidos y citas.
+
+Permite que pequeños negocios y profesionales tengan herramientas de IA a su alcance sin saber programar.
+
+Promueve la digitalización local y la productividad en Perú y Latinoamérica.

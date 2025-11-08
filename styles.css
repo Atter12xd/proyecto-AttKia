@@ -83,7 +83,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 80px 20px;
+    padding: clamp(60px, 12vh, 100px) 20px;
     position: relative;
     opacity: 1;
     transform: translateY(0);
@@ -106,7 +106,7 @@ body {
 }
 
 .section-title {
-    font-size: 3.5rem;
+    font-size: clamp(2.1rem, 5.5vw, 3.5rem);
     font-weight: 900;
     text-align: center;
     margin-bottom: 20px;
@@ -117,7 +117,7 @@ body {
 }
 
 .section-subtitle {
-    font-size: 1.3rem;
+    font-size: clamp(1.05rem, 2.6vw, 1.3rem);
     text-align: center;
     color: var(--color-gray);
     margin-bottom: 60px;
@@ -163,8 +163,8 @@ body {
 }
 
 .logo-image {
-    height: 180px;
-    width: auto;
+    width: clamp(160px, 18vw, 220px);
+    height: auto;
     object-fit: contain;
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
     transition: var(--transition);
@@ -189,6 +189,10 @@ body {
     text-align: center;
     position: relative;
     z-index: 2;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .hero-badge {
@@ -282,36 +286,43 @@ body {
 
 .hero-image-container {
     position: relative;
-    height: 500px;
-    margin: 60px 0 40px;
+    width: 100%;
+    max-width: 960px;
+    min-height: 420px;
+    margin: 60px auto 40px;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
 }
 
 /* Phone Mockup */
 .phone-mockup {
-    width: 350px;
-    height: 700px;
+    width: clamp(220px, 28vw, 340px);
+    aspect-ratio: 9 / 19.5;
     background: #000;
     border-radius: 40px;
-    padding: 15px;
+    padding: clamp(12px, 2vw, 18px);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     position: relative;
     z-index: 2;
-    transform: scale(0.7);
+    display: flex;
+    flex-direction: column;
 }
 
 .phone-screen {
     width: 100%;
-    height: 100%;
+    flex: 1;
     background: #ECE5DD;
     border-radius: 30px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .whatsapp-chat {
-    padding: 20px;
+    padding: clamp(16px, 2.5vw, 20px);
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -2268,13 +2279,23 @@ body {
     }
 
     .phone-mockup {
-        transform: scale(0.6);
+        width: clamp(240px, 38vw, 300px);
     }
 
     .solution-content,
     .market-content {
         grid-template-columns: 1fr;
         gap: 40px;
+    }
+
+    .hero-image-container {
+        min-height: 340px;
+        margin: 40px auto 30px;
+        gap: 24px;
+    }
+
+    .hero-content {
+        padding: 0 10px;
     }
 
     .peru-map-container {
@@ -2368,8 +2389,7 @@ body {
 
 @media (max-width: 768px) {
     .side-nav {
-        right: 15px;
-        gap: 10px;
+        display: none;
     }
 
     .nav-dot {
@@ -2398,12 +2418,19 @@ body {
     }
 
     .phone-mockup {
-        transform: scale(0.5);
+        width: min(260px, 75vw);
     }
 
     .floating-notification {
+        position: static;
+        width: 100%;
+        max-width: 320px;
         padding: 10px 15px;
         font-size: 0.85rem;
+        justify-content: center;
+        animation: none;
+        margin: 10px auto 0;
+        box-shadow: var(--shadow-md);
     }
 
     .cards-grid {
@@ -2421,12 +2448,15 @@ body {
     }
 
     .logo-image {
-        height: 100px;
+        width: clamp(140px, 52vw, 190px);
+        height: auto;
     }
     
     .logo-container {
-        left: 20px;
-        top: 20px;
+        position: static;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
     }
 
     .logo-section-img {
@@ -2531,6 +2561,29 @@ body {
 
     .logo-placeholder i {
         font-size: 1.5rem;
+    }
+
+    .section {
+        min-height: auto;
+        padding: 70px 16px;
+    }
+
+    .hero-content {
+        padding: 0 8px;
+    }
+
+    .hero-image-container {
+        min-height: 0;
+        margin: 30px auto;
+        gap: 18px;
+    }
+
+    .hero-stats {
+        gap: 18px;
+    }
+
+    .notif-content {
+        text-align: center;
     }
 }
 
@@ -5270,6 +5323,40 @@ body {
         right: 15px;
         padding: 12px 16px;
         font-size: 14px;
+    }
+
+    .hero-title {
+        font-size: 1.7rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .hero-badge {
+        font-size: 0.85rem;
+        padding: 6px 18px;
+    }
+
+    .hero-stats {
+        gap: 16px;
+    }
+
+    .stat-item {
+        width: 100%;
+    }
+
+    .phone-mockup {
+        width: min(230px, 82vw);
+        padding: 12px;
+    }
+
+    .floating-notification {
+        max-width: 260px;
+    }
+
+    .section {
+        padding: 55px 14px;
     }
 }
 
